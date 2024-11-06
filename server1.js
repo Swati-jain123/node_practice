@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const db=require('./db')
+require('dotenv').config();
 
 // use body-parser  for deal with data format
 const bodyParser = require('body-parser');
@@ -10,6 +11,7 @@ app.use(bodyParser.json());
 const Person=require('./models/Person');
 const MenuItem=require('./models/Menu');
 
+const PORT=process.env.PORT || 3000;   // FOR ACCESS ENV FILE 
 app.get('/',function(req,res){
     res.send('Welcome to My Hotel....!, How Can i help you ?')
 })
@@ -54,7 +56,7 @@ app.get('/person',async(req,res)=>{
 })
 
 
-app.listen(3000,()=>{
+app.listen(PORT,()=>{
     console.log('Server is running on port 3000')
 })
 
@@ -78,7 +80,7 @@ app.listen(3000,()=>{
 
 
 // --> use mongoose for connect mongodb to nodejs 
-
+//--> use mongod command for run localhost 
 
 //---> models are the blueprint of our database
 //---> models are the class that we use to interact with our database
@@ -96,3 +98,8 @@ app.listen(3000,()=>{
 // git remote add origin https://github.com/Swati-jain123/node_practice.git
 //git branch -M main
 //git push -u origin main
+// git pull command for get all the changes which done by others 
+
+
+// host mongodb database
+//use mongodb atlas 
